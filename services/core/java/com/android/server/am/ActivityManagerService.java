@@ -15457,8 +15457,8 @@ public class ActivityManagerService extends IActivityManager.Stub
             }
 
             if (!Build.isBuildConsistent()) {
-                Slog.e(TAG, "Build fingerprint is not consistent, warning user");
-                mUiHandler.obtainMessage(SHOW_FINGERPRINT_ERROR_UI_MSG).sendToTarget();
+                Slog.e(TAG, "Build fingerprint is not consistent");
+                // Do not emit warning about vendor mismatch
             }
 
             long ident = Binder.clearCallingIdentity();
