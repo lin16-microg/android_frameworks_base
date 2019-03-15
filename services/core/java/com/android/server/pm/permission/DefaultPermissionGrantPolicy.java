@@ -763,8 +763,8 @@ public final class DefaultPermissionGrantPolicy {
                     trackIntent, userId);
             if (trackPackage != null
                     && doesPackageSupportRuntimePermissions(trackPackage)) {
-                grantRuntimePermissions(trackPackage, SENSORS_PERMISSIONS, false, userId);
-                grantRuntimePermissions(trackPackage, LOCATION_PERMISSIONS, false, userId);
+                //grantRuntimePermissions(trackPackage, SENSORS_PERMISSIONS, false, userId);
+                //grantRuntimePermissions(trackPackage, LOCATION_PERMISSIONS, false, userId);
             }
         }
 
