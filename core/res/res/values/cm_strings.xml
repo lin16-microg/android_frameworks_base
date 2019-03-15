@@ -57,7 +57,9 @@
     <string name="app_ops_modify_clipboard">modify the clipboard</string>
     <string name="app_ops_modify_contacts">update your contacts</string>
     <string name="app_ops_modify_settings">update system settings</string>
+    <string name="app_ops_motion_sensors">use the motion sensors</string>
     <string name="app_ops_mute_unmute_microphone">mute/unmute the microphone</string>
+    <string name="app_ops_other_sensors">use other sensors</string>
     <string name="app_ops_phone_calls">answer phone calls</string>
     <string name="app_ops_picture_in_picture">use picture in picture</string>
     <string name="app_ops_play_audio">play audio</string>

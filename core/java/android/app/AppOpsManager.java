@@ -371,8 +371,12 @@ public class AppOpsManager {
     public static final int OP_DATA_CONNECT_CHANGE = 81;
     /** @hide SU access */
     public static final int OP_SU = 82;
+    /** @hide Motion Sensors */
+    public static final int OP_MOTION_SENSORS = 83;
+    /** @hide Other Sensors */
+    public static final int OP_OTHER_SENSORS = 84;
     /** @hide */
-    public static final int _NUM_OP = 83;
+    public static final int _NUM_OP = 85;
 
     /** Access to coarse location information. */
     public static final String OPSTR_COARSE_LOCATION = "android:coarse_location";
@@ -628,6 +632,11 @@ public class AppOpsManager {
     /** @hide */
     public static final String OPSTR_SU = "android:su";
 
+    public static final String OPSTR_MOTION_SENSORS =
+            "android:motion_sensors";
+    public static final String OPSTR_OTHER_SENSORS =
+            "android:other_sensors";
+
     // Warning: If an permission is added here it also has to be added to
     // com.android.packageinstaller.permission.utils.EventLogger
     private static final int[] RUNTIME_AND_APPOP_PERMISSIONS_OPS = {
@@ -676,7 +685,9 @@ public class AppOpsManager {
             OP_WRITE_SETTINGS,
             OP_REQUEST_INSTALL_PACKAGES,
             OP_START_FOREGROUND,
-            OP_SU
+            OP_SU,
+            OP_MOTION_SENSORS,
+            OP_OTHER_SENSORS
     };
 
     /**
@@ -771,6 +782,8 @@ public class AppOpsManager {
             OP_NFC_CHANGE,                      // NFC_CHANGE
             OP_DATA_CONNECT_CHANGE,             // DATA_CONNECT_CHANGE
             OP_SU,                              // SU
+            OP_MOTION_SENSORS,                  // MOTION_SENSORS
+            OP_OTHER_SENSORS                    // OTHER_SENSORS
     };
 
     /**
@@ -860,6 +873,8 @@ public class AppOpsManager {
             OPSTR_NFC_CHANGE,
             OPSTR_DATA_CONNECT_CHANGE,
             OPSTR_SU,
+            OPSTR_MOTION_SENSORS,
+            OPSTR_OTHER_SENSORS,
     };
 
     /**
@@ -950,6 +965,8 @@ public class AppOpsManager {
             "NFC_CHANGE",
             "DATA_CONNECT_CHANGE",
             "SU",
+            "MOTION_SENSORS",
+            "OTHER_SENSORS",
     };
 
     /**
@@ -1040,6 +1057,8 @@ public class AppOpsManager {
             Manifest.permission.NFC,
             null,
             null, // no permission for OP_SU
+            null, // no permission for OP_MOTION_SENSORS
+            null, // no permission for OP_OTHER_SENSORS
     };
 
     /**
@@ -1131,6 +1150,8 @@ public class AppOpsManager {
             null, // NFC_CHANGE
             null, // DATA_CONNECT_CHANGE
             UserManager.DISALLOW_SU, // SU TODO: this should really be investigated.
+            null, //MOTION_SENSORS
+            null, //OTHER_SENSORS
     };
 
     /**
@@ -1221,6 +1242,8 @@ public class AppOpsManager {
             true, // NFC_CHANGE
             true, // DATA_CONNECT_CHANGE
             false, // SU
+            false, //MOTION_SENSORS
+            false, //OTHER_SENSORS
     };
 
     /**
@@ -1310,6 +1333,8 @@ public class AppOpsManager {
             AppOpsManager.MODE_ALLOWED,  // OP_NFC_CHANGE
             AppOpsManager.MODE_ALLOWED,  // OP_DATA_CONNECT_CHANGE
             AppOpsManager.MODE_ASK,      // OP_SU
+            AppOpsManager.MODE_ASK,      // OP_MOTION_SENSORS
+            AppOpsManager.MODE_ALLOWED,  // OP_OTHER_SENSORS
     };
 
     /**
@@ -1400,6 +1425,8 @@ public class AppOpsManager {
             AppOpsManager.MODE_ASK,     // OP_NFC_CHANGE
             AppOpsManager.MODE_ASK,     // OP_DATA_CONNECT_CHANGE
             AppOpsManager.MODE_ASK,     // OP_SU
+            AppOpsManager.MODE_ASK,     // OP_MOTION_SENSORS
+            AppOpsManager.MODE_ALLOWED, // OP_OTHER_SENSORS
     };
 
     /**
@@ -1489,6 +1516,8 @@ public class AppOpsManager {
             true,  // NFC_CHANGE
             true,  // DATA_CONNECT_CHANGE
             true,  // SU
+            true,     // OP_MOTION_SENSORS
+            false,    // OP_OTHER_SENSORS
     };
 
     /**
@@ -1582,6 +1611,8 @@ public class AppOpsManager {
             false, // OP_NFC_CHANGE
             false, // OP_DATA_CONNECT_CHANGE
             false, // OP_SU
+            false, // OP_MOTION_SENSORS
+            false, // OP_OTHER_SENSORS
     };
 
     /**

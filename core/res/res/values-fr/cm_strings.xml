@@ -48,7 +48,9 @@
     <string name="app_ops_modify_clipboard">modifier le presse-papiers</string>
     <string name="app_ops_modify_contacts">mettre à jour vos contacts</string>
     <string name="app_ops_modify_settings">mettre à jour les paramètres du système</string>
+    <string name="app_ops_motion_sensors">utiliser les capteurs de mouvement</string>
     <string name="app_ops_mute_unmute_microphone">activer/désactiver le microphone</string>
+    <string name="app_ops_other_sensors">utiliser d\'autres capteurs</string>
     <string name="app_ops_phone_calls">répondre aux appels téléphoniques</string>
     <string name="app_ops_picture_in_picture">utiliser le mode Picture-in-Picture</string>
     <string name="app_ops_play_audio">lecture audio</string>

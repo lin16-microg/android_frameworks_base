@@ -1775,6 +1775,15 @@ public class AppOpsService extends IAppOpsService.Stub {
                     op.rejectTime[uidState.state] = System.currentTimeMillis();
                     op.ignoredCount++;
                     return mode;
+                } else if (uid == Process.SYSTEM_UID || packageName == "com.android.systemui") {
+                    /*
+                     *  To avoid a deadlock situation in case of system/privileged apps having
+                     *  'MODE_ASK'as default in case of own AppOps (e.g. OP_MOTION_SENSORS),
+                     *  we need to grant always access to such privileged system apps.
+                     *
+                     *  This 'blind' condition causes the PermissionDialog req not to be
+                     *  initialised, hence the `if (req == null)` condition below applies.
+                     */
                 } else if (mode == AppOpsManager.MODE_ASK) {
                     if (Looper.myLooper() == mLooper || Thread.holdsLock(mActivityManagerService)) {
                         Slog.e(TAG, "noteOperation: this method will deadlock if called" +
@@ -1953,7 +1962,15 @@ public class AppOpsService extends IAppOpsService.Stub {
                 op.rejectTime[uidState.state] = System.currentTimeMillis();
                 op.ignoredCount++;
                 return mode;
-            } else if (mode == AppOpsManager.MODE_ALLOWED) {
+            } else if ((mode == AppOpsManager.MODE_ALLOWED) ||
+                    /*
+                     * To avoid a deadlock situation in case of system/privileged apps having
+                     * 'MODE_ASK'as default in case of own AppOps (e.g. OP_MOTION_SENSORS),
+                     * we need to grant always access to such privileged system apps
+                     */
+                    ((uid == Process.SYSTEM_UID || packageName == "com.android.systemui") &&
+                    (mode == AppOpsManager.MODE_ASK))) {
+
                 if (DEBUG) Slog.d(TAG, "startOperation: allowing code " + code + " uid " + uid
                         + " package " + resolvedPackageName);
                 if (op.startNesting == 0) {

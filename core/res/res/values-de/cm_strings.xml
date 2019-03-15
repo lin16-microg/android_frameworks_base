@@ -52,7 +52,9 @@
     <string name="app_ops_modify_clipboard">die Zwischenablage zu ändern</string>
     <string name="app_ops_modify_contacts">Kontakte zu ändern</string>
     <string name="app_ops_modify_settings">Einstellungen zu ändern</string>
+    <string name="app_ops_motion_sensors">Bewegungssensoren zu nutzen</string>
     <string name="app_ops_mute_unmute_microphone">das Mikrofon zu aktivieren/deaktivieren</string>
+    <string name="app_ops_other_sensors">sonstige Sensoren zu nutzen</string>
     <string name="app_ops_phone_calls">Anrufe zu beantworten</string>
     <string name="app_ops_picture_in_picture">Bild im Bild zu verwenden</string>
     <string name="app_ops_play_audio">Audio wiederzugeben</string>
