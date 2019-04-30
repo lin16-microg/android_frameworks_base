@@ -1780,6 +1780,10 @@ public class AppOpsManager {
         return sOpDefaultMode[op];
     }
 
+    /**
+     * Retrieve the default mode for the operation.
+     * @hide
+     */
     public static int opToDefaultMode(int op) {
         return opToDefaultMode(op, false);
     }
