@@ -1822,11 +1822,13 @@ public class AppOpsService extends IAppOpsService.Stub {
                     op.rejectTime[uidState.state] = System.currentTimeMillis();
                     op.ignoredCount++;
                     return mode;
-                } else if (uid == Process.SYSTEM_UID || packageName == "com.android.systemui") {
+                } else if (uid == Process.SYSTEM_UID || packageName == "com.android.systemui" ||
+                           (packageName == "media" && code == AppOpsManager.OP_MOTION_SENSORS)) {
                     /*
                      *  To avoid a deadlock situation in case of system/privileged apps having
                      *  'MODE_ASK'as default in case of own AppOps (e.g. OP_MOTION_SENSORS),
                      *  we need to grant always access to such privileged system apps.
+                     *  Further, work-around for HUAWEI cameradeamon running as media uid
                      *
                      *  This 'blind' condition causes the PermissionDialog req not to be
                      *  initialised, hence the `if (req == null)` condition below applies.
@@ -2015,7 +2017,13 @@ public class AppOpsService extends IAppOpsService.Stub {
                      * 'MODE_ASK'as default in case of own AppOps (e.g. OP_MOTION_SENSORS),
                      * we need to grant always access to such privileged system apps
                      */
-                    ((uid == Process.SYSTEM_UID || packageName == "com.android.systemui") &&
+                    (((uid == Process.SYSTEM_UID || packageName == "com.android.systemui") ||
+                    /*
+                     * Treble work-around:
+                     * Huawei CameraDeaemon runs as media user, motion sensor popup appears
+                     * Despite granting this access, the popup re-appears after each reboot
+                     */
+                     (resolvedPackageName == "media" && code == AppOpsManager.OP_MOTION_SENSORS)) &&
                     (mode == AppOpsManager.MODE_ASK))) {
 
                 if (DEBUG) Slog.d(TAG, "startOperation: allowing code " + code + " uid " + uid
