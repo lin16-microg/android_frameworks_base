@@ -632,8 +632,10 @@ public class AppOpsManager {
     /** @hide */
     public static final String OPSTR_SU = "android:su";
 
+    /** @hide */
     public static final String OPSTR_MOTION_SENSORS =
             "android:motion_sensors";
+    /** @hide */
     public static final String OPSTR_OTHER_SENSORS =
             "android:other_sensors";
 
