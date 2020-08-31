@@ -3510,6 +3510,7 @@ public final class Settings {
          *
          * @see #RINGTONE
          * @see #DEFAULT_RINGTONE2_URI
+         * @hide
          */
         public static final String RINGTONE2 = "ringtone2";
 
@@ -3530,6 +3531,7 @@ public final class Settings {
          * at any given time.
          *
          * @see #DEFAULT_RINGTONE_URI
+         * @hide
          */
         public static final Uri DEFAULT_RINGTONE2_URI = getUriFor(RINGTONE2);
 
