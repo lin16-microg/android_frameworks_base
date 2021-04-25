@@ -45,7 +45,7 @@ public class Build {
     public static final String ID = getString("ro.build.id");
 
     /** A build ID string meant for displaying to the user */
-    public static final String DISPLAY = getString("ro.build.display.id");
+    public static final String DISPLAY = getBuildDisplayId();
 
     /** The name of the overall product. */
     public static final String PRODUCT = getString("ro.product.name");
@@ -1139,6 +1139,16 @@ public class Build {
             return Long.parseLong(SystemProperties.get(property));
         } catch (NumberFormatException e) {
             return -1;
+        }
+    }
+
+    private static String getBuildDisplayId() {
+        // Work-around for Huawei treble builds
+        String huaweiBuildId = getString("ro.huawei.build.display.id");
+        if ( huaweiBuildId == UNKNOWN ) {
+            return getString("ro.build.display.id");
+        } else {
+            return huaweiBuildId;
         }
     }
 }
