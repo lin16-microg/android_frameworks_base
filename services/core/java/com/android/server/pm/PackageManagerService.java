@@ -11831,8 +11831,8 @@ public class PackageManagerService extends IPackageManager.Stub
 
                 AsyncTask.execute(() -> {
                     if (hasOldPkg) {
-                        mPermissionManager.revokeRuntimePermissionsIfGroupChanged(pkg, oldPkg,
-                                allPackageNames, mPermissionCallback);
+                        mPermissionManager.onPackageUpdated(pkg, oldPkg, allPackageNames,
+                                 mPermissionCallback);
                     }
                     if (hasPermissionDefinitionChanges) {
                         mPermissionManager.revokeRuntimePermissionsIfPermissionDefinitionChanged(
