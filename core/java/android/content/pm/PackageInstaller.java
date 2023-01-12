@@ -1509,6 +1509,10 @@ public class PackageInstaller {
          * Return the package name of the app that owns this session.
          */
         public @Nullable String getInstallerPackageName() {
+            if (installerPackageName.equals("com.aurora.store") ||
+                installerPackageName.equals("com.aurora.services")) {
+                return "com.android.vending";
+            }
             return installerPackageName;
         }
 
