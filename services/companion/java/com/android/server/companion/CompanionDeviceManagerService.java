@@ -25,6 +25,7 @@ import static com.android.internal.util.function.pooled.PooledLambda.obtainRunna
 
 import android.Manifest;
 import android.annotation.CheckResult;
+import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
@@ -49,11 +50,10 @@ import android.os.IBinder;
 import android.os.IDeviceIdleController;
 import android.os.IInterface;
 import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
 import android.os.Process;
 import android.os.RemoteException;
-import android.os.ResultReceiver;
 import android.os.ServiceManager;
-import android.os.ShellCallback;
 import android.os.ShellCommand;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -342,10 +342,12 @@ public class CompanionDeviceManagerService extends SystemService implements Bind
         }
 
         @Override
-        public void onShellCommand(FileDescriptor in, FileDescriptor out, FileDescriptor err,
-                String[] args, ShellCallback callback, ResultReceiver resultReceiver)
-                throws RemoteException {
-            new ShellCmd().exec(this, in, out, err, args, callback, resultReceiver);
+        public int handleShellCommand(@NonNull ParcelFileDescriptor in,
+                @NonNull ParcelFileDescriptor out, @NonNull ParcelFileDescriptor err,
+                @NonNull String[] args) {
+            return new ShellCmd()
+                    .exec(this, in.getFileDescriptor(), out.getFileDescriptor(),
+                            err.getFileDescriptor(), args);
         }
     }
 
