@@ -1883,8 +1883,8 @@ public class ApplicationPackageManager extends PackageManager {
     public String getInstallerPackageName(String packageName) {
         try {
             String installer = mPM.getInstallerPackageName(packageName);
-            if (("com.aurora.store".equals(installer)) ||
-                ("com.aurora.services".equals(installer))) {
+            if ("com.aurora.store" == installer ||
+                "com.aurora.services" == installer) {
                 return "com.android.vending";
             }
             return installer;

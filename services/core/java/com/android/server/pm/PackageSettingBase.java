@@ -185,8 +185,8 @@ public abstract class PackageSettingBase extends SettingBase {
     }
 
     public String getInstallerPackageName() {
-        if (installerPackageName.equals("com.aurora.store") ||
-             installerPackageName.equals("com.aurora.services")) {
+        if (installerPackageName == "com.aurora.store" ||
+             installerPackageName == "com.aurora.services") {
             return "com.android.vending";
         }
         return installerPackageName;
