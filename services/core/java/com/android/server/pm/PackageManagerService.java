@@ -191,6 +191,7 @@ import android.content.pm.SELinuxUtil;
 import android.content.pm.ServiceInfo;
 import android.content.pm.SharedLibraryInfo;
 import android.content.pm.Signature;
+import android.content.pm.SigningInfo;
 import android.content.pm.UserInfo;
 import android.content.pm.VerifierDeviceIdentity;
 import android.content.pm.VerifierInfo;
@@ -4110,6 +4111,14 @@ public class PackageManagerService extends IPackageManager.Stub
                 String sig = p.mAppMetaData.getString("fake-signature");
                 if (sig != null) {
                     pi.signatures = new Signature[] {new Signature(sig)};
+                    pi.signingInfo = new SigningInfo(
+                        new SigningDetails(
+                                pi.signatures,
+                                SigningDetails.SignatureSchemeVersion.SIGNING_BLOCK_V3,
+                                null,
+                                null
+                        )
+                    );
                 }
             }
         } catch (Throwable t) {
